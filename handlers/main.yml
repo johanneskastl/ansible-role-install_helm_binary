@@ -14,3 +14,12 @@
     - 'installation'
   when:
     - 'not ansible_check_mode | bool'
+
+- name: 'Remove helm archive'
+  ansible.builtin.file:
+    path: "/tmp/helm-{{ latest_helm_release }}-linux-{{ github_architecture }}.tar.gz"
+    state: 'absent'
+  tags:
+    - 'installation'
+  when:
+    - 'not ansible_check_mode | bool'

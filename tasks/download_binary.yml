@@ -54,6 +54,10 @@
     owner: 'root'
     group: 'root'
     mode: '0755'
+  register: download_latest_helm
+  failed_when:
+    - download_latest_helm.failed == true
+    - "'Unable to find a checksum for file' in download_latest_helm.msg and not ansible_check_mode"
   notify:
     - 'Extract helm executable from archive'
     - 'Remove helm archive'

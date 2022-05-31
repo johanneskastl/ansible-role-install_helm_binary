@@ -1,0 +1,16 @@
+---
+# install_helm_binary/handlers/main.yml
+
+- name: 'Extract helm executable from archive'
+  ansible.builtin.unarchive:
+    src: "/tmp/helm-{{ latest_helm_release }}-linux-{{ github_architecture }}.tar.gz"
+    dest: "{{ path_to_install_to }}/"
+    remote_src: 'true'
+    extra_opts:
+      - --transform
+      - 's/linux-{{ github_architecture }}\///'
+      - "linux-{{ github_architecture }}/helm"
+  tags:
+    - 'installation'
+  when:
+    - 'not ansible_check_mode | bool'

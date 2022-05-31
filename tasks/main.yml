@@ -1,0 +1,7 @@
+---
+# install_helm_binary/tasks/main.yml
+
+- name: 'Download binary'
+  ansible.builtin.include_tasks: download_binary.yml
+  tags:
+    - 'installation'

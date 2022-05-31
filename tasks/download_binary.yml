@@ -56,6 +56,7 @@
     mode: '0755'
   notify:
     - 'Extract helm executable from archive'
+    - 'Remove helm archive'
 
 - name: 'Flush handlers to extract binary now'
   ansible.builtin.meta: flush_handlers

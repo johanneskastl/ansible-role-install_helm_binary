@@ -25,7 +25,7 @@
 #
 
 - name: 'Install tar and unzip'
-  package:
+  ansible.builtin.package:
     name:
       - 'tar'
       - 'unzip'
